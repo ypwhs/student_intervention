@@ -854,10 +854,7 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
     <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
-    <span class="c1"># Print the results</span>
-<span class="c1">#     print &quot;Trained model in {:.4f} seconds&quot;.format(end - start)</span>
-
-    
+  
 <span class="k">def</span> <span class="nf">predict_labels</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; 用训练好的分类器做预测并输出F1值&#39;&#39;&#39;</span>
     
@@ -881,19 +878,13 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 
 <span class="k">def</span> <span class="nf">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; 用一个分类器训练和预测，并输出F1值 &#39;&#39;&#39;</span>
-   
-
-    <span class="c1"># 输出分类器名称和训练集大小</span>
-<span class="c1">#     print &quot;Training a {} using a training set size of {}. . .&quot;.format(clf.__class__.__name__, len(X_train))</span>
-    
+      
     <span class="c1"># 训练一个分类器</span>
     <span class="n">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">f1_score_train</span><span class="p">,</span> <span class="n">train_time</span> <span class="o">=</span> <span class="n">predict_labels_mine</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
     <span class="n">f1_score_test</span><span class="p">,</span> <span class="n">test_time</span> <span class="o">=</span> <span class="n">predict_labels_mine</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
     
     <span class="c1"># 输出训练和测试的预测结果</span>
-<span class="c1">#     print &quot;F1 score for training set: {:.4f}.&quot;.format(predict_labels(clf, X_train, y_train))</span>
-<span class="c1">#     print &quot;F1 score for test set: {:.4f}.&quot;.format(predict_labels(clf, X_test, y_test))</span>
     <span class="k">print</span> <span class="s2">&quot;| {:} | {:.4f} | {:.4f} | {:.4f} | {:.4f} |&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">),</span> <span class="n">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="n">test_time</span><span class="p">,</span> <span class="n">f1_score_train</span><span class="p">,</span> <span class="n">f1_score_test</span><span class="p">)</span>
 </pre></div>
 
@@ -932,9 +923,7 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span class="c1"># TODO：从sklearn中引入三个监督学习模型</span>
-<span class="c1"># from sklearn import model_A</span>
-<span class="c1"># from sklearn import model_B</span>
-<span class="c1"># from skearln import model_C</span>
+
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
@@ -944,28 +933,16 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">clf_C</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
 
-<span class="c1"># TODO：设置训练集大小</span>
-<span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
-<span class="n">y_train_100</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
-
-<span class="n">X_train_200</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
-<span class="n">y_train_200</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span>
-
-<span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
-<span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
-
 <span class="n">clfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">clf_B</span><span class="p">,</span> <span class="n">clf_C</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clfs</span><span class="p">):</span>
-    <span class="k">print</span>
     <span class="k">print</span> <span class="s2">&quot;** 分类器 {} - {} **&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">clfs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
-    <span class="k">print</span> 
+    <span class="k">print</span> <span class="s1">&#39;&#39;</span>
     <span class="k">print</span> <span class="s2">&quot;| 训练集大小 | 训练时间 | 预测时间 (测试) | F1值 (训练) | F1值 (测试) |&quot;</span>
     <span class="k">print</span> <span class="s2">&quot;| :----: | :----: | :----: | :----: | :----: |&quot;</span>
-    <span class="k">for</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="ow">in</span> <span class="p">((</span><span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">),</span> <span class="p">(</span><span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">),</span> <span class="p">(</span><span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">)):</span>
-        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<span class="c1"># TODO：对每一个分类器和每一个训练集大小运行&#39;train_predict&#39; </span>
-<span class="c1"># train_predict(clf, X_train, y_train, X_test, y_test)</span>
+    <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]:</span> <span class="c1"># TODO：设置训练集大小</span>
+        <span class="n">train_predict</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">[:</span><span class="n">size</span><span class="p">],</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">size</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="k">print</span> 
 </pre></div>
 
 </div>
@@ -978,30 +955,30 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>
-** 分类器 1 - DecisionTreeClassifier **
+<pre>** 分类器 1 - DecisionTreeClassifier **
 
 | 训练集大小 | 训练时间 | 预测时间 (测试) | F1值 (训练) | F1值 (测试) |
 | :----: | :----: | :----: | :----: | :----: |
 | 100 | 0.0007 | 0.0002 | 1.0000 | 0.7586 |
-| 200 | 0.0014 | 0.0001 | 1.0000 | 0.7179 |
-| 300 | 0.0018 | 0.0002 | 1.0000 | 0.6721 |
+| 200 | 0.0012 | 0.0002 | 1.0000 | 0.7179 |
+| 300 | 0.0020 | 0.0002 | 1.0000 | 0.6721 |
 
 ** 分类器 2 - SVC **
 
 | 训练集大小 | 训练时间 | 预测时间 (测试) | F1值 (训练) | F1值 (测试) |
 | :----: | :----: | :----: | :----: | :----: |
-| 100 | 0.0011 | 0.0008 | 0.8707 | 0.7681 |
-| 200 | 0.0045 | 0.0012 | 0.8738 | 0.7943 |
-| 300 | 0.0061 | 0.0016 | 0.8595 | 0.7832 |
+| 100 | 0.0010 | 0.0007 | 0.8707 | 0.7681 |
+| 200 | 0.0036 | 0.0012 | 0.8738 | 0.7943 |
+| 300 | 0.0062 | 0.0015 | 0.8595 | 0.7832 |
 
 ** 分类器 3 - KNeighborsClassifier **
 
 | 训练集大小 | 训练时间 | 预测时间 (测试) | F1值 (训练) | F1值 (测试) |
 | :----: | :----: | :----: | :----: | :----: |
-| 100 | 0.0005 | 0.0012 | 0.8182 | 0.6935 |
-| 200 | 0.0009 | 0.0017 | 0.8264 | 0.7669 |
-| 300 | 0.0015 | 0.0022 | 0.8761 | 0.7761 |
+| 100 | 0.0005 | 0.0013 | 0.8182 | 0.6935 |
+| 200 | 0.0006 | 0.0024 | 0.8264 | 0.7669 |
+| 300 | 0.0014 | 0.0034 | 0.8761 | 0.7761 |
+
 </pre>
 </div>
 </div>
@@ -1038,24 +1015,24 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0006</td>
+<td style="text-align:center">0.0009</td>
 <td style="text-align:center">0.0003</td>
-<td style="text-align:center">0.8889</td>
-<td style="text-align:center">0.7692</td>
+<td style="text-align:center">1.0000</td>
+<td style="text-align:center">0.7586</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0009</td>
+<td style="text-align:center">0.0012</td>
 <td style="text-align:center">0.0002</td>
-<td style="text-align:center">0.8973</td>
-<td style="text-align:center">0.7258</td>
+<td style="text-align:center">1.0000</td>
+<td style="text-align:center">0.7179</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0028</td>
-<td style="text-align:center">0.0002</td>
-<td style="text-align:center">0.8962</td>
-<td style="text-align:center">0.7500</td>
+<td style="text-align:center">0.0030</td>
+<td style="text-align:center">0.0006</td>
+<td style="text-align:center">1.0000</td>
+<td style="text-align:center">0.6721</td>
 </tr>
 </tbody>
 </table>
@@ -1072,21 +1049,21 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0019</td>
+<td style="text-align:center">0.0016</td>
 <td style="text-align:center">0.0012</td>
 <td style="text-align:center">0.8707</td>
 <td style="text-align:center">0.7681</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0043</td>
-<td style="text-align:center">0.0018</td>
+<td style="text-align:center">0.0040</td>
+<td style="text-align:center">0.0017</td>
 <td style="text-align:center">0.8738</td>
 <td style="text-align:center">0.7943</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
-<td style="text-align:center">0.0079</td>
+<td style="text-align:center">0.0070</td>
 <td style="text-align:center">0.0018</td>
 <td style="text-align:center">0.8595</td>
 <td style="text-align:center">0.7832</td>
@@ -1106,24 +1083,24 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 <tbody>
 <tr>
 <td style="text-align:center">100</td>
-<td style="text-align:center">0.0010</td>
-<td style="text-align:center">0.0021</td>
-<td style="text-align:center">0.8065</td>
-<td style="text-align:center">0.6422</td>
+<td style="text-align:center">0.0005</td>
+<td style="text-align:center">0.0012</td>
+<td style="text-align:center">0.8182</td>
+<td style="text-align:center">0.6935</td>
 </tr>
 <tr>
 <td style="text-align:center">200</td>
-<td style="text-align:center">0.0012</td>
-<td style="text-align:center">0.0030</td>
-<td style="text-align:center">0.7786</td>
-<td style="text-align:center">0.7520</td>
+<td style="text-align:center">0.0010</td>
+<td style="text-align:center">0.0017</td>
+<td style="text-align:center">0.8264</td>
+<td style="text-align:center">0.7669</td>
 </tr>
 <tr>
 <td style="text-align:center">300</td>
 <td style="text-align:center">0.0008</td>
-<td style="text-align:center">0.0023</td>
-<td style="text-align:center">0.8296</td>
-<td style="text-align:center">0.7727</td>
+<td style="text-align:center">0.0029</td>
+<td style="text-align:center">0.8761</td>
+<td style="text-align:center">0.7761</td>
 </tr>
 </tbody>
 </table>
@@ -1159,7 +1136,7 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 <p><strong>回答: </strong></p>
 <ul>
 <li>通过对Decision Trees， K-Nearest Neighbors ， Support Vector Machines这三种算法模型进行比较。我将会选择Support Vector Machines来作为最佳的模型。</li>
-<li>我认为在成本差距不大的情况下，提高准确度是最重要的。将准确度提高0.01就能在395个学生中多定位到4个学生，这对于学生来说是非常重要的，所以我选择了F1值（测试）最高的算法模型SVM，虽然决策树F1值（训练）更高一些，但是对于测试集的表现却没有那么好，可能出现了过拟合。</li>
+<li>我认为在成本差距不大的情况下，提高准确度是最重要的。将准确度提高0.01就能在395个学生中多定位到4个学生，这对于学生来说是非常重要的，所以我选择了F1值（测试）最高的算法模型SVM，虽然决策树F1值（训练）很高，但是对于测试集的表现却没有那么好，出现了过拟合，原因应该是没有设置max_depth和min_samples_split，通过设置这两个参数可以对模型进行优化，得到更好的结果，但对于这个问题，决策树仍然不是最好的选择。</li>
 <li>SVM的预测时间相比KNN来讲是很经济的，虽然训练时间略长，但我觉得是可接受的。</li>
 </ul>
 
@@ -1183,8 +1160,9 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>回答: </strong></p>
 <p>在这个学生干预系统中，我最终选择了SVM这个算法模型。这是一个非常适合用于分类的模型，尤其适合于多特征的，是或否的简单分类问题。比如我们需要划分的学生是否存在不能毕业的风险。通过SVM这个模型，我们可以根据学生的生活习惯（比如出去玩的次数时间，学习时间），家庭背景（父母的教育情况），经济条件等特征进行分析，从而得知学生能否顺利毕业。</p>
-<p>SVM的工作原理是这样的，首先我们往年学生的信息特征以及他们最终是否毕业，把它们标记在一个空间中，比如下图以五星代表顺利毕业的学生，以红点代表没有顺利毕业的学生（当然由于我们有很多的学生信息的特征，实际上是不能展现在一个二维的的平面中的，只作为示例）。</p>
-<p>SVM可以通过我们输入的学生信息，计算出下图中C这条直线，这条直线距离顺利毕业和没有顺利毕业的学生都是最远的，所以能够很好的把他们分开，这样我们就完成了对模型的训练。然后当我们输入新的学生信息时，这些学生就会被分到C直线的左上方或者右下方。那么位于C直线左上方的学生我们就可以放心的让他们自主学习，他们基本都是可以顺利毕业的，但是对于C直线右下方的学生我们需要及早的帮助他们以防他们在毕业时遇到障碍。</p>
+<p>SVM的工作原理是这样的，首先我们将往年学生的信息特征以及他们最终是否毕业，把它们标记在一个空间中，他们在原始维度的时候是混乱的，难以划分。因为我们有很多的学生信息的特征，每一个特征都代表一个维度。在SVM的算法模型中有很多神奇的核函数，通过运算，任何在低维中线性不可分的样本集都能找到一个高维特征空间使样本可分。在学生干预系统中，我们使用的核函数是rbf，它帮助我们将能否顺利毕业的学生划分开。</p>
+<p>比如下图以五星代表顺利毕业的学生，以红点代表没有顺利毕业的学生（当然由于我们有很多的学生信息的特征，实际上是不能展现在一个二维的的平面中的，只作为示例）。</p>
+<p>SVM可以通过我们输入的学生信息，计算出下图中C这条直线（事实上，C是在高维空间中的一个超平面），这条直线距离顺利毕业和没有顺利毕业的学生都是最远的，所以能够很好的把他们分开，这样我们就完成了对模型的训练。然后当我们输入新的学生信息时，这些学生就会被分到C直线的左上方或者右下方。那么位于C直线左上方的学生我们就可以放心的让他们自主学习，他们基本都是可以顺利毕业的，但是对于C直线右下方的学生我们需要及早的帮助他们以防他们在毕业时遇到障碍。</p>
 <p><img src="SVM_4.png" alt="Mou icon">
 <em>图片来自于<a href="https://www.analyticsvidhya.com/blog/2015/10/understaing-support-vector-machine-example-code/">https://www.analyticsvidhya.com/blog/2015/10/understaing-support-vector-machine-example-code/</a></em></p>
 
@@ -1260,9 +1238,9 @@ SVM同样可以用来识别手写数字，但是和KNN使用方法不同。
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Made predictions in 0.0057 seconds.
+<pre>Made predictions in 0.0051 seconds.
 Tuned model has a training F1 score of 0.8560.
-Made predictions in 0.0031 seconds.
+Made predictions in 0.0016 seconds.
 Tuned model has a testing F1 score of 0.7917.
 </pre>
 </div>
